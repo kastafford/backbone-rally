@@ -3,6 +3,8 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 export default defineConfig({
+  // Relative assets work at both username.github.io/ and /repository-name/.
+  base: './',
   plugins: [{
     name: 'local-trailer-export',
     configureServer(server) {
