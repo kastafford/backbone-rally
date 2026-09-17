@@ -2,6 +2,10 @@
 
 A browser marble racer: follow a real protein's N-to-C backbone through helices, sheets, and loops.
 
+**[Play Backbone Rally in your browser →](https://kastafford.github.io/backbone-rally/)**
+
+*Coming soon: the game is currently being tested privately. This project URL will become available when GitHub Pages is enabled.*
+
 Built by Kate Stafford **with Astra in Codex**—a deliberately vibe-coded experiment in turning a protein-structure game idea into something playable. Kate supplied the concept, scientific direction, and playtesting feedback; Astra wrote and iterated on the game, visuals, sound effects, trailer, and deployment setup. The game uses Three.js and Vite.
 
 [Watch or download the 20-second trailer](public/media/backbone-rally-trailer.mp4). The deployed site also includes a `trailer.html` watch page.
@@ -23,7 +27,7 @@ Short original synthesized effects play for starting, jumping/landing, collectin
 
 ## Develop locally
 
-These instructions are for running your own copy after cloning the repository. The hosted GitHub Pages version requires no checkout or installation.
+These instructions are for running your own copy after cloning the repository. Once published, the hosted GitHub Pages version requires no checkout or installation.
 
 From the checked-out repository directory:
 
@@ -96,19 +100,19 @@ Set `FFMPEG=/path/to/ffmpeg` if it is not on your PATH. The script replaces the 
 
 ## Publish on GitHub Pages
 
-The site is entirely static: no backend, API key, database, or paid service is required. The workflow in `.github/workflows/pages.yml` installs the lockfile, runs the tests, builds the site, and deploys `dist/` on pushes to `main`. Pull requests run the tests and build without deploying.
+The site is entirely static: no backend, API key, database, or paid service is required. The workflow in `.github/workflows/pages.yml` installs the lockfile, runs the tests, builds the site, and deploys `dist/` on pushes to `main` only when the repository variable `PUBLISH_PAGES` is `true`. Pull requests run the tests and build without deploying.
 
-1. Create an empty GitHub repository, without a generated README or license.
-2. Connect and push this local repository (replace `OWNER` and `REPO`):
+This project's repository is [kastafford/backbone-rally](https://github.com/kastafford/backbone-rally), owned by Kate's personal account. Both the source repository and website are being kept private during testing: the repository is private and the website is **not deployed**. GitHub Pages on a personal account would expose the website publicly even with a private source repository, so publication is explicitly gated.
 
-   ```sh
-   git remote add origin https://github.com/OWNER/REPO.git
-   git push -u origin main
-   ```
+When ready to publish:
 
-3. In GitHub, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**.
-4. Open **Actions → Test and deploy GitHub Pages → Run workflow**. If a first run failed before Pages was enabled, rerun it.
-5. The deployment job shows the live URL, usually `https://OWNER.github.io/REPO/`. The trailer is at `https://OWNER.github.io/REPO/trailer.html`.
+1. Decide whether to make the repository public as well. Publishing from a private personal repository requires GitHub Pro; a public repository supports Pages on GitHub Free.
+2. In **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**.
+3. In **Settings → Secrets and variables → Actions → Variables**, create a repository variable named `PUBLISH_PAGES` with the value `true`. This enables public website deployment.
+4. Open **Actions → Test and deploy GitHub Pages → Run workflow**.
+5. Play at **https://kastafford.github.io/backbone-rally/** or watch the trailer at **https://kastafford.github.io/backbone-rally/trailer.html**. This project site leaves `kastafford.github.io` available for a separate personal site.
+
+While `PUBLISH_PAGES` is unset or false, pushes and pull requests run tests and builds only. After a site has been published, turning the variable off stops future deployments; it does not unpublish the existing site. Use Settings → Pages to unpublish it if needed.
 
 Vite uses relative asset URLs, including the bundled PDB fetches, so any repository name works without editing paths. It also works at a user-site root or custom domain. See the [official Vite deployment guide](https://vite.dev/guide/static-deploy#github-pages) for GitHub's setup steps. Only built files are uploaded; the development recording endpoint is not deployed.
 
