@@ -1,25 +1,12 @@
 # Backbone Rally
 
-A browser marble racer built with Three.js and Vite. Follow a protein's N-to-C backbone through helices, sheets, and loops.
+A browser marble racer: follow a real protein's N-to-C backbone through helices, sheets, and loops.
+
+Built by Kate Stafford **with Astra in Codex**—a deliberately vibe-coded experiment in turning a protein-structure game idea into something playable. Kate supplied the concept, scientific direction, and playtesting feedback; Astra wrote and iterated on the game, visuals, sound effects, trailer, and deployment setup. The game uses Three.js and Vite.
 
 [Watch or download the 20-second trailer](public/media/backbone-rally-trailer.mp4). The deployed site also includes a `trailer.html` watch page.
 
-## Run
-
-```sh
-npm ci
-npm run dev
-```
-
-Open http://127.0.0.1:5173. Requires a current WebGL-capable browser and Node.js 22.12+ (or a newer supported Node release).
-
-```sh
-npm test      # parsing, shortcut discovery, reactions, and sound lifecycle
-npm run build # production output in dist/
-npm run preview
-```
-
-## Play
+## How to play
 
 - W / up: accelerate; S / down: brake.
 - A / left and D / right: steer across the ribbon.
@@ -33,6 +20,25 @@ Crambin (1CRN, 46 residues), ubiquitin (1UBQ, 76 residues), and myoglobin (1MBN,
 The marble has a camera-facing 3D face independent of its rolling shell. Pupils track the upcoming ribbon; it blinks, smiles with sparkles for waters and boosts, winces after collisions, and frowns with tears during falls and briefly after respawning. Jumps get a surprised expression. Reactions freeze while paused.
 
 Short original synthesized effects play for starting, jumping/landing, collecting waters, boosts, bumps, checkpoints, falls, respawning, and finishing. There is no background music during play. Use **Sound on/off** to mute; the preference is saved locally. Audio starts after a user gesture and is cancelled on pause or restart.
+
+## Develop locally
+
+These instructions are for running your own copy after cloning the repository. The hosted GitHub Pages version requires no checkout or installation.
+
+From the checked-out repository directory:
+
+```sh
+npm ci
+npm run dev
+```
+
+For local development, open http://127.0.0.1:5173. Requires a current WebGL-capable browser and Node.js 22.12+ (or a newer supported Node release).
+
+```sh
+npm test      # parsing, shortcut discovery, reactions, and sound lifecycle
+npm run build # production output in dist/
+npm run preview
+```
 
 ## Molecular model and deliberate simplifications
 
