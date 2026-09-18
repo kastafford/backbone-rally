@@ -117,3 +117,7 @@ Custom structures require a browser connection to `files.rcsb.org`; the three bu
 ## Repository history
 
 The initial commits separate protein parsing/shortcut search, the playable game, trailer assets and recording, Pages deployment, and this guide. Dependencies, generated builds, and intermediate trailer artifacts are excluded. Use `git log --oneline --reverse` to explore the implementation in that order.
+
+## License
+
+The original game code, documentation, and trailer are available under the [MIT License](LICENSE). Third-party dependencies and molecular data retain their respective licenses and terms; see the data sources above.
